@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Stoic Quote • QuoteGen</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<main>
+  <h1>Stoic Quote</h1>
+  <blockquote th:text="${quote}" style="font-size:1.2rem; margin:1rem 0;">Quote…</blockquote>
+  <p th:if="${author}">— <strong th:text="${author}">Author</strong></p>
+  <p><a href="/quotes/stoic">Another one</a> • <a href="/">Home</a></p>
+</main>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Random Quote • QuoteGen</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<main>
+    <h1>Random Quote</h1>
+    <blockquote th:text="${quote}" style="font-size:1.2rem; margin:1rem 0;">
+        A quote will appear here…
+    </blockquote>
+    <p>
+        <a href="/quotes/random">Another one</a> • <a href="/">Home</a>
+    </p>
+</main>
+</body>
+</html>

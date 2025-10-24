@@ -63,28 +63,22 @@ cd quoteGen
 ### 2️⃣ Check Java & Gradle
 Ensure you have Java 21+ installed:
 
-bash
-Copy code
 java -version
 You can use the Gradle wrapper included with the project (no need to install Gradle manually).
 
 ### 3️⃣ Run the application
-bash
-Copy code
+
 ./gradlew bootRun
 💡 On Windows use:
 
-bash
-Copy code
 gradlew.bat bootRun
 After the build completes, you’ll see something like:
 
-nginx
-Copy code
 Tomcat started on port 8080 (http)
 Started QuoteGenApplication in 2.4 seconds
 
 ### 4️⃣ Open your browser
+
 Visit 👉 http://localhost:8080
 
 You’ll see the home page where you can generate Stoic quotes instantly — without reloading the page.
@@ -92,13 +86,9 @@ You’ll see the home page where you can generate Stoic quotes instantly — wit
 🧩 Optional: Build a JAR file
 If you’d rather run it as a standalone application:
 
-bash
-Copy code
 ./gradlew build
 Then:
 
-bash
-Copy code
 java -jar build/libs/quoteGen-0.0.1-SNAPSHOT.jar
 ✅ Stopping the app
 Press CTRL + C in the terminal to stop the running Spring Boot server.

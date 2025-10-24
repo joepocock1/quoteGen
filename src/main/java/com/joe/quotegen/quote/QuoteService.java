@@ -1,22 +1,39 @@
 package com.joe.quotegen.quote;
 
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
+
+import java.util.*;
 
 @Service
 public class QuoteService {
 
-    private final List<String> quotes = List.of(
-            "Simplicity is the soul of efficiency. — Austin Freeman",
-            "Programs must be written for people to read. — Harold Abelson",
-            "Make it work, make it right, make it fast. — Kent Beck",
-            "Talk is cheap. Show me the code. — Linus Torvalds",
-            "The only way to learn a new programming language is by writing programs in it. — Dennis Ritchie"
-    );
+    private final Map<String, QuoteProvider> providers;
 
-    public String randomQuote() {
-        int i = ThreadLocalRandom.current().nextInt(quotes.size());
-        return quotes.get(i);
+    public QuoteService(List<QuoteProvider> providerList) {
+        // Spring injects ALL beans implementing QuoteProvider here
+        Map<String, QuoteProvider> map = new LinkedHashMap<>();
+        for (QuoteProvider p : providerList) {
+            map.put(p.id(), p);
+        }
+        this.providers = Collections.unmodifiableMap(map);
+    }
+
+    public Set<String> providerIds() {
+        return providers.keySet();
+    }
+
+    public List<QuoteProvider> listProviders() {
+        return List.copyOf(providers.values());
+    }
+
+    public Quote randomFrom(String providerId) {
+        QuoteProvider p = providers.get(providerId);
+        if (p == null) throw new NoSuchElementException("Unknown provider: " + providerId);
+        return p.random();
+    }
+
+    /** A default if you want one */
+    public Quote randomDefault() {
+        return providers.getOrDefault("local", providers.values().iterator().next()).random();
     }
 }

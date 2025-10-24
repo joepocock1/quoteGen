@@ -1,19 +1,15 @@
-:root {
-    font-family: system-ui, Arial, sans-serif;
-}
-
 body {
-    margin: 2rem;
-    line-height: 1.6;
-    background: #fafafa;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
-h1 {
-    margin-bottom: 0.25rem;
-    color: #333;
+blockquote {
+    line-height: 1.5;
 }
 
-a {
-    color: #2a6bf4;
-    text-decoration: none;
+.btn {
+    border-radius: 0.5rem;
+}
+
+footer {
+    font-size: 0.9rem;
 }

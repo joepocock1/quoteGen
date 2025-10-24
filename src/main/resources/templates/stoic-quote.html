@@ -11,16 +11,22 @@
     <div class="card shadow-lg border-0 p-4 text-center">
       <h1 class="mb-4 text-primary">Stoic Quote</h1>
 
-      <blockquote class="blockquote fs-4 fst-italic text-dark" th:text="${quote}">
+      <blockquote id="js-quote-text"
+                  class="blockquote fs-4 fst-italic text-dark"
+                  th:text="${quote}">
         Quote goes here…
       </blockquote>
 
       <footer class="blockquote-footer mt-2" th:if="${author}">
-        <span th:text="${author}">Author</span>
+        <span id="js-quote-author" th:text="${author}">Author</span>
       </footer>
 
       <div class="mt-4">
-        <a href="/quotes/stoic" class="btn btn-outline-primary me-2">Another One</a>
+        <button id="js-new-quote"
+                class="btn btn-outline-primary me-2"
+                data-provider="stoic">
+          Another One
+        </button>
         <a href="/" class="btn btn-secondary">Home</a>
       </div>
     </div>

@@ -14,13 +14,16 @@ public class QuotePageController {
         this.service = service;
     }
 
-    // Handles browser routes like /quotes/local or /quotes/stoic
-    @GetMapping("/{provider}")
-    public String show(@PathVariable String provider, Model model) {
-        Quote q = service.randomFrom(provider);
+    @GetMapping("/quotes")               // /quotes → redirect to the only category we have
+    public String quotesRoot() {
+        return "redirect:/quotes/stoic";
+    }
+
+    @GetMapping("stoic")         // render the stoic page
+    public String stoic(Model model) {
+        Quote q = service.randomFrom("stoic");
         model.addAttribute("quote", q.text());
         model.addAttribute("author", q.author());
-        model.addAttribute("provider", provider);
-        return "quote-by-provider"; // looks for templates/quote-by-provider.html
+        return "stoic-quote";            // <-- matches templates/stoic-quote.html
     }
 }
